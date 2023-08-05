@@ -4,7 +4,7 @@
       <a-button
         type="primary"
         style="margin-bottom: 16px"
-        @click="handleCollapsedClick"
+        @click.stop="handleCollapsedClick"
       >
         <a-icon :type="collapsed ? 'menu-unfold' : 'menu-fold'" />
       </a-button>
@@ -44,45 +44,48 @@
 </template>
 <script>
 export default {
-    data() {
-        return {
-            collapsed: false,
-        }
-    },
-    methods: {
-        handleCollapsedClick() {
-            this.collapsed = !this.collapsed
-            this.$emit('collapsed', this.collapsed)
-        }
+  props: {
+    collapsed: {
+      type: Boolean,
     }
+  },
+  data() {
+    return {
+    }
+  },
+  methods: {
+    handleCollapsedClick() {
+      this.$emit('collapsed',)
+    }
+  }
 }
 </script>
 
 <style lang="less" scoped>
 .header-container {
-    height: 100%;
-    display: flex;
-    align-items: center;
-    position: relative;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  position: relative;
 
-    .trigger {
-        position: absolute;
-        top: 50%;
-        transform: translate(0, -50%);
+  .trigger {
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+  }
+
+  .bread-crumb {
+    margin-left: 60px;
+  }
+
+  .avatar {
+    position: absolute;
+    display: inline-block;
+    right: 0;
+
+    .block {
+      padding: 0;
     }
-
-    .bread-crumb {
-        margin-left: 60px;
-    }
-
-    .avatar {
-        position: absolute;
-        display: inline-block;
-        right: 0;
-
-        .block {
-            padding: 0;
-        }
-    }
+  }
 }
 </style>
