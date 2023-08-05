@@ -12,7 +12,10 @@
       </a-layout-sider>
       <a-layout>
         <a-layout-header style="height: 50px;background: #fff;padding: 0;margin: 5px 8px;">
-          <Header @collapsed="handleCollapsed" />
+          <TopHeader
+            :collapsed="collapsed"
+            @collapsed="handleCollapsed"
+          />
         </a-layout-header>
         <a-layout-content style="margin: 8px;border: 1px solid gray;">
           <Content />
@@ -22,14 +25,14 @@
   </div>
 </template>
 <script>
-import Header from './component/header.vue';
+import TopHeader from './component/header.vue';
 import SideBar from './component/sideBar.vue';
 import Content from './component/content.vue';
 
 export default {
   components: {
     SideBar,
-    Header,
+    TopHeader,
     Content
   },
   data() {
@@ -38,9 +41,8 @@ export default {
     };
   },
   methods: {
-    handleCollapsed(info) {
-      console.log(info);
-      this.collapsed = info
+    handleCollapsed() {
+      this.collapsed = !this.collapsed
     }
   }
 };
