@@ -91,15 +91,15 @@ export default {
             this.$refs.form.validate((valid) => {
                 if (valid) {
                     console.log('表单验证通过，执行登录逻辑');
-                    user.login({ ...this.form, appkey: 'ecke_1691060018828' })
+                    user.login({ ...this.form })
                         .then((res) => {
                             console.log(res);
+                            this.$store.dispatch('setUserInfo', res)
                             this.$router.push('/')
+                            this.$message.success(`登陆成功！欢迎，${res.username}`)
                         })
                         .catch((error) => {
                             this.$message.error(error)
-                            this.$router.push('/')
-
                         })
                 } else {
                     console.log('表单验证不通过');

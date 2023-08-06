@@ -16,39 +16,41 @@
       </a-breadcrumb>
     </div>
     <div class="avatar">
-      <a-menu mode="inline">
-        <a-sub-menu style="height: 50px;">
-          <span
-            slot="title"
-            style="align-items: center;"
-          >
-            <a-avatar
-              style="margin-right: 15px;"
-              :size="35"
-              src="https://img1.baidu.com/it/u=2172179147,855392769&fm=253&fmt=auto&app=138&f=JPEG?w=200&h=200"
-            />
-            <span>欢迎，Ecke</span>
-          </span>
+      <a-avatar
+        src="https://img1.baidu.com/it/u=2172179147,855392769&fm=253&fmt=auto&app=138&f=JPEG?w=200&h=200"
+        style="margin-right: 5px;"
+      />
+      <a-dropdown placement="bottomCenter">
+        <span>欢迎，{{ user.username }} <a-icon type="down" /></span>
+        <a-menu slot="overlay">
           <a-menu-item>
-            <a-icon type="user" />
-            <span>个人中心</span>
+            <a href="javascript:;">
+              <a-icon type="user" />
+              <span>个人中心</span>
+            </a>
           </a-menu-item>
           <a-menu-item>
-            <a-icon type="logout" />
-            <span>退出</span>
+            <a href="javascript:;">
+              <a-icon type="logout" />
+              <span> 退出</span>
+            </a>
           </a-menu-item>
-        </a-sub-menu>
-      </a-menu>
+        </a-menu>
+      </a-dropdown>
     </div>
   </div>
 </template>
 <script>
+import { mapState } from 'vuex'
 export default {
   props: {
     collapsed: {
       type: Boolean,
     }
   },
+  computed: mapState({
+    user: state => state.user
+  }),
   data() {
     return {
     }
@@ -81,11 +83,7 @@ export default {
   .avatar {
     position: absolute;
     display: inline-block;
-    right: 0;
-
-    .block {
-      padding: 0;
-    }
+    right: 40px;
   }
 }
 </style>

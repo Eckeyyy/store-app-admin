@@ -7,7 +7,11 @@ const routes = [
   {
     path: '/',
     name: 'Home',
+    title: '首页',
     component: layout,
+    meta: {
+      auth: true
+    }
   },
   {
     path: '/login',

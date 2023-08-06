@@ -4,6 +4,7 @@ import router from './router';
 import store from './store';
 import './plugins/ant-design-vue';
 import './assets/css/reset.less'
+import './permission'
 Vue.config.productionTip = false;
 
 new Vue({
