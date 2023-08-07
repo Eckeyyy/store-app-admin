@@ -12,7 +12,7 @@ export function setUserCookies(Info) {
 export function getUserCookies() {
     return {
         username: cookie.get('username'),
-        appKey: cookie.get('appKey'),
+        appKey: cookie.get('appkey'),
         role: cookie.get('role'),
         email: cookie.get('email')
     }
@@ -20,7 +20,7 @@ export function getUserCookies() {
 //删除cookies
 export function removeUserCookies() {
     cookie.remove('username');
-    cookie.remove('appKey');
+    cookie.remove('appkey');
     cookie.remove('role');
     cookie.remove('email');
     return true

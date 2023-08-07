@@ -1,12 +1,13 @@
 <template>
   <div class="content-container">
-    <router-view name="path" />
+    <router-view />
   </div>
 </template>
-
 <script>
 export default {
+  computed: {
 
+  }
 }
 </script>
 <style lang="less" scoped>

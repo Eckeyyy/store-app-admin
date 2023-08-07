@@ -29,7 +29,7 @@
               <span>个人中心</span>
             </a>
           </a-menu-item>
-          <a-menu-item>
+          <a-menu-item @click="handleExit">
             <a href="javascript:;">
               <a-icon type="logout" />
               <span> 退出</span>
@@ -58,6 +58,10 @@ export default {
   methods: {
     handleCollapsedClick() {
       this.$emit('collapsed',)
+    },
+    async handleExit() {
+      await this.$store.dispatch('userLogout')
+      this.$router.push('/login')
     }
   }
 }

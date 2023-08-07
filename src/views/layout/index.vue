@@ -7,7 +7,9 @@
         collapsible
         style="height: 100vh;"
       >
-        <div class="logo" />
+        <div class="logo">
+          每日优鲜
+        </div>
         <SideBar />
       </a-layout-sider>
       <a-layout>
@@ -50,6 +52,14 @@ export default {
 <style lang="less" scoped>
 .layout-container {
   height: 100vh;
+
+  .logo {
+    text-align: center;
+    line-height: 32px;
+    font-size: 30px;
+    letter-spacing: 5px;
+    color: #fff;
+  }
 }
 
 #components-layout-demo-custom-trigger .trigger {

@@ -64,54 +64,46 @@
 </template>
 
 <script>
-import * as user from '@/api/user.js'
 export default {
-    data() {
-        // const validateEmail = (rule, value, callback) => {
-        //     if (!value) {
-        //         callback(new Error('请输入邮箱'));
-        //     } else {
-        //         callback(); // 验证通过时需要调用 callback()，不传参
-        //     }
-        // };
-        return {
-            form: {
-                email: '',
-                password: '',
-            },
-            rules: {
-                email: [{ trigger: 'blur', required: true, message: '请输入邮箱' }],
-                password: [{ trigger: 'blur', required: true, message: '请输入密码' }],
-            },
-            isShow: false
-        };
-    },
-    methods: {
-        executeLogin() {
-            this.$refs.form.validate((valid) => {
-                if (valid) {
-                    console.log('表单验证通过，执行登录逻辑');
-                    user.login({ ...this.form })
-                        .then((res) => {
-                            console.log(res);
-                            this.$store.dispatch('setUserInfo', res)
-                            this.$router.push('/')
-                            this.$message.success(`登陆成功！欢迎，${res.username}`)
-                        })
-                        .catch((error) => {
-                            this.$message.error(error)
-                        })
-                } else {
-                    console.log('表单验证不通过');
-                }
-            });
-        },
-
-        //控制密码显示
-        handlePasswordShow() {
-            this.isShow = !this.isShow
+  data() {
+    // const validateEmail = (rule, value, callback) => {
+    //     if (!value) {
+    //         callback(new Error('请输入邮箱'));
+    //     } else {
+    //         callback(); // 验证通过时需要调用 callback()，不传参
+    //     }
+    // };
+    return {
+      form: {
+        email: '',
+        password: '',
+      },
+      rules: {
+        email: [{ trigger: 'blur', required: true, message: '请输入邮箱' }],
+        password: [{ trigger: 'blur', required: true, message: '请输入密码' }],
+      },
+      isShow: false
+    };
+  },
+  methods: {
+    executeLogin() {
+      this.$refs.form.validate(async (valid) => {
+        if (valid) {
+          console.log('表单验证通过，执行登录逻辑');
+          await this.$store.dispatch('userLogin', this.form).then(() => {
+            this.$message.success('登陆成功')
+            this.$router.push('/')
+          })
+        } else {
+          console.log('表单验证不通过');
         }
+      });
     },
+    //控制密码显示
+    handlePasswordShow() {
+      this.isShow = !this.isShow
+    }
+  },
 };
 </script>
 
