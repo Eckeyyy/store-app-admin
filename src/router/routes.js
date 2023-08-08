@@ -36,11 +36,13 @@ export const asyncRoutes = [{
             component: () => import('@/views/pages/category'),
             meta: {
                 title: '商品分类',
-                auth: true
+                auth: true,
+                icon: 'edit'
             }
         }
     ]
-}]
+},
+]
 
 export const routes = [
     {
@@ -69,7 +71,8 @@ export const routes = [
         hidden: true,
         component: () => import('@/views/login'),
         meta: {
-            title: '登陆'
+            title: '登陆',
+            icon: 'login'
         }
     },
 ];

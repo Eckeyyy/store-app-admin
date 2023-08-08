@@ -11,8 +11,8 @@
     </div>
     <div class="bread-crumb">
       <a-breadcrumb style="font-size: 18px;">
-        <a-breadcrumb-item>商品</a-breadcrumb-item>
-        <a-breadcrumb-item>商品列表</a-breadcrumb-item>
+        <a-breadcrumb-item>{{ $router.currentRoute.matched[0].meta.title }}</a-breadcrumb-item>
+        <a-breadcrumb-item>{{ $route.meta.title }}</a-breadcrumb-item>
       </a-breadcrumb>
     </div>
     <div class="avatar">
@@ -42,6 +42,7 @@
 </template>
 <script>
 import { mapState } from 'vuex'
+import router from '../../../router';
 export default {
   props: {
     collapsed: {
@@ -54,6 +55,9 @@ export default {
   data() {
     return {
     }
+  },
+  created() {
+    console.log(this, router);
   },
   methods: {
     handleCollapsedClick() {

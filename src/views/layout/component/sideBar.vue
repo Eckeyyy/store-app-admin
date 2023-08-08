@@ -34,7 +34,7 @@
 export default {
   data() {
     return {
-      selected: ["统计"],
+      selected: ["首页"],
     }
   },
   methods: {

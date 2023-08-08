@@ -36,27 +36,24 @@ function getMenuRoutes(role, routes) {
 let isAddRoutes = false
 router.beforeEach(async (to, from, next) => {
     let userInfo = store.state.user
-    if (!isAddRoutes) {
-        const routes2 = getMenuRoutes(userInfo.role, asyncRoutes)
-        console.log(routes2);
-        router.addRoute(...routes2)
-        await store.dispatch('asyncSetRoutes', (routes.concat(routes2)))
-        isAddRoutes = true
-    }
     console.log(to);
-    if (to.meta.auth) {
+    if (to.path !== '/login') {
         if (userInfo.appKey && userInfo.role) {
-            next()
+            if (isAddRoutes) {
+                next()
+            }
+            else {
+                const finalRoutes = getMenuRoutes(userInfo.role, asyncRoutes)
+                router.addRoute(...finalRoutes)
+                await store.dispatch('asyncSetRoutes', (routes.concat(finalRoutes)))
+                isAddRoutes = true
+                next()
+            }
         }
         else {
             next('/login')
         }
     } else {
-        if (to.path === '/login' && userInfo.appKey) {
-            next('/')
-        }
-        else {
-            next()
-        }
+        next()
     }
 })

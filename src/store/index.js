@@ -36,7 +36,7 @@ export default new Vuex.Store({
     userLogin({ commit }, userInfo) {
       return new Promise((resolve, reject) => {
         login(userInfo).then(res => {
-          console.log(res);
+          // console.log(res);
           commit('setUser', res)
           setUserCookies(res)
           resolve()
