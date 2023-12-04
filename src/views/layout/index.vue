@@ -36,6 +36,7 @@ export default {
     handleCollapsed(info) {
       console.log(info);
       console.log(info);
+      console.log(info);
       this.collapsed = info;
     },
   },
