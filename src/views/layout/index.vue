@@ -37,6 +37,7 @@ export default {
       console.log(info);
       console.log(info);
       console.log(info);
+      console.log(123);
       this.collapsed = info;
     },
   },
