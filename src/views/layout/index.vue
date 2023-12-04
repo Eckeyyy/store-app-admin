@@ -1,20 +1,15 @@
 <template>
   <div class="layout-container">
     <a-layout id="components-layout-demo-custom-trigger">
-      <a-layout-sider
-        v-model="collapsed"
-        :trigger="null"
-        collapsible
-        style="height: 100vh;"
-      >
+      <a-layout-sider v-model="collapsed" :trigger="null" collapsible style="height: 100vh">
         <div class="logo" />
         <SideBar />
       </a-layout-sider>
       <a-layout>
-        <a-layout-header style="height: 50px;background: #fff;padding: 0;margin: 5px 8px;">
+        <a-layout-header style="height: 50px; background: #fff; padding: 0; margin: 5px 8px">
           <Header @collapsed="handleCollapsed" />
         </a-layout-header>
-        <a-layout-content style="margin: 8px;border: 1px solid gray;">
+        <a-layout-content style="margin: 8px; border: 1px solid gray">
           <Content />
         </a-layout-content>
       </a-layout>
@@ -22,15 +17,15 @@
   </div>
 </template>
 <script>
-import Header from './component/header.vue';
-import SideBar from './component/sideBar.vue';
-import Content from './component/content.vue';
+import Header from "./component/header.vue";
+import SideBar from "./component/sideBar.vue";
+import Content from "./component/content.vue";
 
 export default {
   components: {
     SideBar,
     Header,
-    Content
+    Content,
   },
   data() {
     return {
@@ -40,9 +35,10 @@ export default {
   methods: {
     handleCollapsed(info) {
       console.log(info);
-      this.collapsed = info
-    }
-  }
+      console.log(info);
+      this.collapsed = info;
+    },
+  },
 };
 </script>
 <style lang="less" scoped>
